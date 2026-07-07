@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const API_URL = 'http://127.0.0.1:8000'
+const API_URL = 'https://ai-mock-interviewer-backend-cc6i.onrender.com'
 
 function App() {
   const [selectedField, setSelectedField] = useState('')
