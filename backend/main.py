@@ -49,7 +49,7 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 import time
 
-def generate_with_retry(prompt, max_retries=3):
+def generate_with_retry(prompt, max_retries=4):
     for attempt in range(max_retries):
         try:
             response = client.models.generate_content(
@@ -59,9 +59,9 @@ def generate_with_retry(prompt, max_retries=3):
             return response.text
         except Exception as e:
             if attempt < max_retries - 1:
-                time.sleep(2)  # wait 2 seconds before trying again
+                time.sleep(5)  # increased from 2 to 5 seconds
                 continue
-            raise e  # if all retries fail, raise the error
+            raise e
 
 @app.get("/")
 def read_root():
